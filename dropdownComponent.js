@@ -83,12 +83,6 @@ module.exports = function(fastn, component, type, settings, children){
     component.setProperty('show');
 
     function keyHandler(event){
-        let bounds = component.element.getBoundingClientRect();
-        dropdownElement.modalElement.style.top = bounds.bottom + 2;
-        dropdownElement.modalElement.style.left = bounds.left;
-        dropdownElement.modalElement.style.right = bounds.left + 10;
-        dropdownElement.modalElement.style.bottom = 'inherit';
-
         if(!component.show()){
             if(~showKeys.indexOf(event.which)){
                 component.show(true);
@@ -128,7 +122,16 @@ module.exports = function(fastn, component, type, settings, children){
         component.emit('render');
     }
 
+
     component.on('input',( search )=>{
+
+      let bounds = component.element.getBoundingClientRect();
+
+      dropdownElement.modalElement.style.top = bounds.bottom + 2 + 'px';
+      dropdownElement.modalElement.style.left = bounds.left + 'px';
+      dropdownElement.modalElement.style.right = 'inherit';//bounds.right + 10 + 'px';
+      dropdownElement.modalElement.style.bottom = 'initial';
+
       let options = dropdownModel.get('options');
       dropdownModel.set('show',true);
       dropdownModel.set('filteredOptions', options.filter( (item)=>{
@@ -140,9 +143,9 @@ module.exports = function(fastn, component, type, settings, children){
         })
       )
     })
-    .on('click', function(){
-        dropdownModel.set('show', !dropdownModel.get('show'));
-    });
+    // .on('click', function(){
+    //     dropdownModel.set('show', !dropdownModel.get('show'));
+    // });
 
     let dropdownElement = fastn('modal',  {
         show: fastn.binding('show').attach(dropdownModel),
