@@ -17,7 +17,7 @@ const submitKeys = [enterKey];
 const showKeys = [downKey, spaceKey];
 const navKeys = [upKey, downKey];
 
-defaultCss('dropdown-component', 'input.dropdown-component{height: 60px;padding: 10px;font-family:"Arial";font-size: 20px;} .dropdown-component-modal{position:fixed;top:0;bottom:0;left:0;right:0;background:rgba(0,0,0,0.5);}.dropdown-component-modal .content{background:white} .dropdown-option{padding: 10px;font-family:"Arial";font-size: 14px;} .dropdown-option:hover{background-color:lightGray; } .dropdown-option.selected { background-color:#4285F4; color:white;} .modal-component{box-shadow: 0 3px 4px rgba(0,0,0,0.3);background-color:white;margin-left:1px; display:flex;flex-direction: column;overflow:auto;}');
+defaultCss('dropdown-component', 'input.dropdown-component{height: 60px;padding: 10px;font-family:"Arial";font-size: 20px;} .dropdown-component-modal{background:rgba(0,0,0,0.5);}.dropdown-component-modal .content{background:white} .dropdown-option{padding: 10px;font-family:"Arial";font-size: 14px;} .dropdown-option:hover{background-color:lightGray; } .dropdown-option.selected { background-color:#4285F4; color:white;} .modal-component{box-shadow: 0 3px 4px rgba(0,0,0,0.3);background-color:white;margin-left:1px; display:flex;flex-direction: column;overflow:auto;z-index: 90;}');
 
 function values(object){
     if(Array.isArray(object)){
